@@ -60,6 +60,11 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(botonListaDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 210, 30));
 
         botonBiblioteca.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton2.png")); // NOI18N
+        botonBiblioteca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBibliotecaActionPerformed(evt);
+            }
+        });
         jPanel1.add(botonBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 120, 30));
 
         BotonTienda.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton1.png")); // NOI18N
@@ -152,6 +157,13 @@ public class Menu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botonBibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBibliotecaActionPerformed
+        // TODO add your handling code here:
+        Biblioteca vc = new Biblioteca();
+        vc.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonBibliotecaActionPerformed
 
     /**
      * @param args the command line arguments

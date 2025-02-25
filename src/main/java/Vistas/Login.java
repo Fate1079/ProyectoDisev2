@@ -49,6 +49,11 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
 
         BotonRegister.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Captura de pantalla 2025-02-24 162440.png")); // NOI18N
+        BotonRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegisterActionPerformed(evt);
+            }
+        });
         jPanel1.add(BotonRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 240, 30));
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 230, 30));
 
@@ -91,7 +96,17 @@ public class Login extends javax.swing.JFrame {
 
     private void BotonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLoginActionPerformed
         // TODO add your handling code here:
+        Menu vc = new Menu();
+        vc.setVisible(true);
+        dispose();
     }//GEN-LAST:event_BotonLoginActionPerformed
+
+    private void BotonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegisterActionPerformed
+        // TODO add your handling code here:
+        Registro vc = new Registro();
+        vc.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BotonRegisterActionPerformed
 
     /**
      * @param args the command line arguments
