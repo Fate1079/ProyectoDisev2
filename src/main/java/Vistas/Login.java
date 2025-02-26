@@ -4,19 +4,23 @@
  */
 package Vistas;
 
+import Controlador.ControladorCliente;
+import Modelo.Usuario;
 import java.net.URL;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author ANDRES FELIPE
  */
 public class Login extends javax.swing.JFrame {
-
+    ControladorCliente controladorC;
     /**
      * Creates new form Login
      */
     public Login() {
+        controladorC= new ControladorCliente();
         initComponents();
      
     }
@@ -98,6 +102,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nombre = txtNombre.getText();
         String contra= txtContra.getText();
+        Usuario cliente =controladorC.BuscarCliente(nombre);
         
         
         
@@ -106,6 +111,12 @@ public class Login extends javax.swing.JFrame {
         AdminJuegos panelAdmin = new AdminJuegos();
         panelAdmin.setVisible(true);
         dispose(); 
+        }else if (cliente!= null && cliente.getContraseña()!= null && cliente.getContraseña().equals(contra)) {
+        Menu panelCliente = new Menu();
+        panelCliente.setVisible(true);
+        dispose();
+        } else {
+        JOptionPane.showMessageDialog(this, "El usuario o la contraseña son incorrectos.");
         }
     }//GEN-LAST:event_BotonLoginActionPerformed
 

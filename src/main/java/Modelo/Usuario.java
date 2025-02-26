@@ -10,15 +10,15 @@ package Modelo;
  */
 public class Usuario {
     private String nombre;
-    private String email;
+    
     private String contraseña;
-    private String tipoUsuario;
+    
 
-    public Usuario(String nombre, String email, String contraseña, String tipoUsuario) {
+    public Usuario(String nombre, String contraseña) {
         this.nombre = nombre;
-        this.email = email;
+        
         this.contraseña = contraseña;
-        this.tipoUsuario = tipoUsuario;
+        
     }
 
     public String getNombre() {
@@ -29,13 +29,7 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    
 
     public String getContraseña() {
         return contraseña;
@@ -45,9 +39,7 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-    public String getTipoUsuario() {
-        return tipoUsuario;
-    }
+    
 
    
 }
