@@ -4,16 +4,22 @@
  */
 package Vistas;
 
+import Controlador.ControladorCliente;
+import Modelo.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ANDRES FELIPE
  */
 public class Registro extends javax.swing.JFrame {
 
+    ControladorCliente controladorC;
     /**
      * Creates new form Registro
      */
     public Registro() {
+        controladorC= new ControladorCliente();
         initComponents();
     }
 
@@ -30,8 +36,8 @@ public class Registro extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        txtContra = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         Retroceder = new javax.swing.JButton();
         Registrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -50,13 +56,23 @@ public class Registro extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("REGISTRARSE");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 250, 30));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 250, 30));
+        jPanel1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 250, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 250, 30));
 
         Retroceder.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Botones2.png")); // NOI18N
+        Retroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RetrocederActionPerformed(evt);
+            }
+        });
         jPanel1.add(Retroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 260, 40));
 
         Registrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Botones2.png")); // NOI18N
+        Registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 260, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Fondo2.png")); // NOI18N
@@ -81,6 +97,27 @@ public class Registro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetrocederActionPerformed
+        // TODO add your handling code here:
+        Login vc = new Login();
+        vc.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_RetrocederActionPerformed
+
+    private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
+        // TODO add your handling code here:
+        String nombre = txtNombre.getText();
+        String contra= txtContra.getText();
+        Usuario usuario= new Usuario(nombre, contra);
+        boolean respuesta = controladorC.Guardar(usuario);
+        if(respuesta){
+            JOptionPane.showMessageDialog(null , "Se registro con exitoso");
+        }else{
+            JOptionPane.showMessageDialog(null, "No se logro registrar debio pasar algun error");
+        }
+        
+    }//GEN-LAST:event_RegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,7 +162,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtContra;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

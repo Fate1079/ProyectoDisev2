@@ -31,14 +31,16 @@ public class ControladorCliente {
     }
     
     
-     public Usuario BuscarElemento(String nombre){
-        for (int i = 0; i < listaUsuario.size(); i++) {
-            if (listaUsuario.get(i).getNombre()==nombre) {
-                return listaUsuario.get(i);
-            }
+    public Usuario BuscarCliente(String NombreUsuario) {
+    for (int i = 0; i < listaUsuario.size(); i++) {
+        String nombreUsuario = listaUsuario.get(i).getNombre();
+        
+        
+        if (nombreUsuario != null && nombreUsuario.equals(NombreUsuario)) {
+            return listaUsuario.get(i);
         }
-        return null;
- 
+    }
+    return null; 
     }
      
      
