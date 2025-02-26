@@ -33,10 +33,10 @@ public class Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         BotonRegister = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        txtContra = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         BotonLogin = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -55,7 +55,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BotonRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 240, 30));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 230, 30));
+        jPanel1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 230, 30));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -69,7 +69,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BotonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, 240, 30));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 230, 30));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 230, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Captura de pantalla 2025-02-24 155500.png")); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, -1));
@@ -96,9 +96,17 @@ public class Login extends javax.swing.JFrame {
 
     private void BotonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLoginActionPerformed
         // TODO add your handling code here:
-        Menu vc = new Menu();
-        vc.setVisible(true);
-        dispose();
+        String nombre = txtNombre.getText();
+        String contra= txtContra.getText();
+        
+        
+        
+      
+        if (nombre.equalsIgnoreCase("admin") && contra.equals("123")) {
+        AdminJuegos panelAdmin = new AdminJuegos();
+        panelAdmin.setVisible(true);
+        dispose(); 
+        }
     }//GEN-LAST:event_BotonLoginActionPerformed
 
     private void BotonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegisterActionPerformed
@@ -151,7 +159,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtContra;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
