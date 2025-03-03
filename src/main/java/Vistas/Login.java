@@ -52,7 +52,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("REGISTRAR");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
 
-        BotonRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 162440.png"))); // NOI18N
+        BotonRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
         BotonRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonRegisterActionPerformed(evt);
@@ -66,7 +66,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("INICIAR SESION");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, -1, -1));
 
-        BotonLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 162440.png"))); // NOI18N
+        BotonLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
         BotonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonLoginActionPerformed(evt);
@@ -75,7 +75,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(BotonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, 240, 30));
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 230, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Captura de pantalla 2025-02-24 155500.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 155500.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 154606.png"))); // NOI18N
@@ -108,7 +108,7 @@ public class Login extends javax.swing.JFrame {
         
       
         if (nombre.equalsIgnoreCase("admin") && contra.equals("123")) {
-        AdminJuegos panelAdmin = new AdminJuegos();
+        VentanaAdmin panelAdmin = new VentanaAdmin();
         panelAdmin.setVisible(true);
         dispose(); 
         }else if (cliente!= null && cliente.getContraseña()!= null && cliente.getContraseña().equals(contra)) {
