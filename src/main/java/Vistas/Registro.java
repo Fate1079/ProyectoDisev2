@@ -46,7 +46,7 @@ public class Registro extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Captura de pantalla 2025-02-24 155500.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 155500.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 120, 100));
 
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -59,7 +59,7 @@ public class Registro extends javax.swing.JFrame {
         jPanel1.add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 250, 30));
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 250, 30));
 
-        Retroceder.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Botones2.png")); // NOI18N
+        Retroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
         Retroceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RetrocederActionPerformed(evt);
@@ -67,7 +67,7 @@ public class Registro extends javax.swing.JFrame {
         });
         jPanel1.add(Retroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 260, 40));
 
-        Registrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Botones2.png")); // NOI18N
+        Registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
         Registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegistrarActionPerformed(evt);
@@ -75,7 +75,7 @@ public class Registro extends javax.swing.JFrame {
         });
         jPanel1.add(Registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 260, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Fondo2.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo2.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

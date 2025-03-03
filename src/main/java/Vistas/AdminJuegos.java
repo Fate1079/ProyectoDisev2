@@ -60,10 +60,10 @@ public class AdminJuegos extends javax.swing.JFrame {
         jLabel6.setText("Colocar juego");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, -1, -1));
 
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Captura de pantalla 2025-02-24 162440.png")); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 162440.png"))); // NOI18N
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 190, 30));
 
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Botones2.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 190, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -85,16 +85,16 @@ public class AdminJuegos extends javax.swing.JFrame {
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, 210, -1));
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 210, -1));
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton5.png")); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton5.png"))); // NOI18N
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 170, 30));
 
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton4.png")); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton4.png"))); // NOI18N
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 100, 30));
 
-        botonListaDes.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton3.png")); // NOI18N
+        botonListaDes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton3.png"))); // NOI18N
         getContentPane().add(botonListaDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 210, 30));
 
-        botonBiblioteca.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton2.png")); // NOI18N
+        botonBiblioteca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton2.png"))); // NOI18N
         botonBiblioteca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBibliotecaActionPerformed(evt);
@@ -102,14 +102,14 @@ public class AdminJuegos extends javax.swing.JFrame {
         });
         getContentPane().add(botonBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 120, 30));
 
-        BotonTienda.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton1.png")); // NOI18N
+        BotonTienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton1.png"))); // NOI18N
         getContentPane().add(BotonTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 90, 30));
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Buscar");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 50, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Botones2.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -118,7 +118,7 @@ public class AdminJuegos extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 70, 20));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 210, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Fondo5.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo5.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 86, 850, 320));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Captura de pantalla 2025-02-24 174839.png")); // NOI18N

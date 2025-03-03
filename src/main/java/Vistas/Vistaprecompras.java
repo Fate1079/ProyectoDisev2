@@ -26,6 +26,8 @@ public class Vistaprecompras extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
@@ -47,6 +49,13 @@ public class Vistaprecompras extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Retroceder");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, -1, -1));
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 162440.png"))); // NOI18N
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 390, 150, 30));
+
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Agregar a lista deseados");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 330, -1, -1));
@@ -55,10 +64,10 @@ public class Vistaprecompras extends javax.swing.JFrame {
         jLabel6.setText("Ir a comprar ");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, -1, -1));
 
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Captura de pantalla 2025-02-24 162440.png")); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 162440.png"))); // NOI18N
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 190, 30));
 
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Botones2.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 190, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -76,16 +85,16 @@ public class Vistaprecompras extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 460, 220));
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton5.png")); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton5.png"))); // NOI18N
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 170, 30));
 
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton4.png")); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton4.png"))); // NOI18N
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 100, 30));
 
-        botonListaDes.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton3.png")); // NOI18N
+        botonListaDes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton3.png"))); // NOI18N
         getContentPane().add(botonListaDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 210, 30));
 
-        botonBiblioteca.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton2.png")); // NOI18N
+        botonBiblioteca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton2.png"))); // NOI18N
         botonBiblioteca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBibliotecaActionPerformed(evt);
@@ -93,14 +102,14 @@ public class Vistaprecompras extends javax.swing.JFrame {
         });
         getContentPane().add(botonBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 120, 30));
 
-        BotonTienda.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton1.png")); // NOI18N
+        BotonTienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton1.png"))); // NOI18N
         getContentPane().add(BotonTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 90, 30));
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Buscar");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 240, 50, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Botones2.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -109,13 +118,13 @@ public class Vistaprecompras extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 240, 70, 20));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 210, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Fondo5.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo5.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 86, 850, 320));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Captura de pantalla 2025-02-24 174839.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\fondo4.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo4.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 890, 390));
 
         pack();
@@ -174,12 +183,14 @@ public class Vistaprecompras extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
