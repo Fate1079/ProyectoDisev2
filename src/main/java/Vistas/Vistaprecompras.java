@@ -54,6 +54,11 @@ public class Vistaprecompras extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, -1, -1));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 162440.png"))); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 390, 150, 30));
 
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -89,9 +94,19 @@ public class Vistaprecompras extends javax.swing.JFrame {
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 170, 30));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton4.png"))); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 100, 30));
 
         botonListaDes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton3.png"))); // NOI18N
+        botonListaDes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonListaDesActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonListaDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 210, 30));
 
         botonBiblioteca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton2.png"))); // NOI18N
@@ -103,6 +118,11 @@ public class Vistaprecompras extends javax.swing.JFrame {
         getContentPane().add(botonBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 120, 30));
 
         BotonTienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton1.png"))); // NOI18N
+        BotonTienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonTiendaActionPerformed(evt);
+            }
+        });
         getContentPane().add(BotonTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 90, 30));
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -140,6 +160,34 @@ public class Vistaprecompras extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        Menu vc = new Menu();
+        vc.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void botonListaDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListaDesActionPerformed
+        // TODO add your handling code here:
+         VistaListaDeseado vc = new VistaListaDeseado();
+        vc.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonListaDesActionPerformed
+
+    private void BotonTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTiendaActionPerformed
+        // TODO add your handling code here:
+        Menu vc = new Menu();
+        vc.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BotonTiendaActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+         VistaListaAmigos vc = new VistaListaAmigos();
+        vc.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
