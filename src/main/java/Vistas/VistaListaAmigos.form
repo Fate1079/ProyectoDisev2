@@ -53,7 +53,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\Captura de pantalla 2025-02-24 162440.png"/>
+          <Image iconType="3" name="/Imagenes/Captura de pantalla 2025-02-24 162440.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -65,7 +65,7 @@
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\Botones2.png"/>
+          <Image iconType="3" name="/Imagenes/Botones2.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -110,7 +110,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\listaAmigos.png"/>
+          <Image iconType="3" name="/Imagenes/listaAmigos.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -122,7 +122,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\Fondo6.png"/>
+          <Image iconType="3" name="/Imagenes/Fondo6.png"/>
         </Property>
       </Properties>
       <Constraints>

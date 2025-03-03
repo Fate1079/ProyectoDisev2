@@ -58,7 +58,7 @@
         <Component class="javax.swing.JButton" name="BotonRegister">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\Captura de pantalla 2025-02-24 162440.png"/>
+              <Image iconType="3" name="/Imagenes/Captura de pantalla 2025-02-24 162440.png"/>
             </Property>
           </Properties>
           <Events>
@@ -96,7 +96,7 @@
         <Component class="javax.swing.JButton" name="BotonLogin">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\Captura de pantalla 2025-02-24 162440.png"/>
+              <Image iconType="3" name="/Imagenes/Captura de pantalla 2025-02-24 162440.png"/>
             </Property>
           </Properties>
           <Events>
@@ -130,7 +130,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\Captura de pantalla 2025-02-24 154606.png"/>
+              <Image iconType="3" name="/Imagenes/Captura de pantalla 2025-02-24 154606.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>

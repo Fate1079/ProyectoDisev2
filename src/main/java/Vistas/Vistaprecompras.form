@@ -25,6 +25,31 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Retroceder"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="700" y="400" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton4">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/Captura de pantalla 2025-02-24 162440.png"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="655" y="390" width="150" height="30"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -54,7 +79,7 @@
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\Captura de pantalla 2025-02-24 162440.png"/>
+          <Image iconType="3" name="/Imagenes/Captura de pantalla 2025-02-24 162440.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -66,7 +91,7 @@
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\Botones2.png"/>
+          <Image iconType="3" name="/Imagenes/Botones2.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -104,7 +129,7 @@
     <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\boton5.png"/>
+          <Image iconType="3" name="/Imagenes/boton5.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -116,7 +141,7 @@
     <Component class="javax.swing.JButton" name="jButton5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\boton4.png"/>
+          <Image iconType="3" name="/Imagenes/boton4.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -128,7 +153,7 @@
     <Component class="javax.swing.JButton" name="botonListaDes">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\boton3.png"/>
+          <Image iconType="3" name="/Imagenes/boton3.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -140,7 +165,7 @@
     <Component class="javax.swing.JButton" name="botonBiblioteca">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\boton2.png"/>
+          <Image iconType="3" name="/Imagenes/boton2.png"/>
         </Property>
       </Properties>
       <Events>
@@ -155,7 +180,7 @@
     <Component class="javax.swing.JButton" name="BotonTienda">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\boton1.png"/>
+          <Image iconType="3" name="/Imagenes/boton1.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -180,7 +205,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\Botones2.png"/>
+          <Image iconType="3" name="/Imagenes/Botones2.png"/>
         </Property>
       </Properties>
       <Events>
@@ -202,7 +227,7 @@
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\Fondo5.png"/>
+          <Image iconType="3" name="/Imagenes/Fondo5.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -226,7 +251,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\ANDRES FELIPE\Downloads\Dise&#xf1;o\fondo4.png"/>
+          <Image iconType="3" name="/Imagenes/fondo4.png"/>
         </Property>
       </Properties>
       <Constraints>
