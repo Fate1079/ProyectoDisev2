@@ -54,16 +54,16 @@ public class Menu extends javax.swing.JFrame {
         jButton2.setText("Comprar");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton5.png")); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton5.png"))); // NOI18N
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 170, 30));
 
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton4.png")); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton4.png"))); // NOI18N
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 100, 30));
 
-        botonListaDes.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton3.png")); // NOI18N
+        botonListaDes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton3.png"))); // NOI18N
         jPanel1.add(botonListaDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 210, 30));
 
-        botonBiblioteca.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton2.png")); // NOI18N
+        botonBiblioteca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton2.png"))); // NOI18N
         botonBiblioteca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBibliotecaActionPerformed(evt);
@@ -71,7 +71,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(botonBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 120, 30));
 
-        BotonTienda.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\boton1.png")); // NOI18N
+        BotonTienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton1.png"))); // NOI18N
         jPanel1.add(BotonTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 90, 30));
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -123,7 +123,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setText("Buscar");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 50, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Botones2.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -132,13 +132,13 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 70, 20));
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 210, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Fondo5.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo5.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 86, 850, 320));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\Captura de pantalla 2025-02-24 174839.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 174839.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANDRES FELIPE\\Downloads\\Diseño\\fondo4.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo4.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 890, 390));
 
         jLabel5.setText("jLabel5");
