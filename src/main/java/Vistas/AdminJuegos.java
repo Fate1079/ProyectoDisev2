@@ -4,19 +4,39 @@
  */
 package Vistas;
 
+import Controlador.ControladorJuegos;
+import Modelo.Juego;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ANDRES FELIPE
  */
 public class AdminJuegos extends javax.swing.JFrame {
-
+    ControladorJuegos controladorjuegos;
     /**
      * Creates new form AdminJuegos
      */
     public AdminJuegos() {
         initComponents();
+        controladorjuegos= new ControladorJuegos();
+        mostrarJuegosAccion();
     }
 
+    
+    private void mostrarJuegosAccion() {
+    try {
+        DefaultTableModel modelo = controladorjuegos.buscarJuegos();
+        tbJuegos.setModel(modelo); // Se asigna a la tabla de comedia
+    } catch (SQLException ex) {
+        Logger.getLogger(AdminJuegos.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(null, "Error al buscar juegos de terror.");
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,16 +46,25 @@ public class AdminJuegos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtPrecio = new javax.swing.JTextField();
+        txtLanzamiento = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        tbJuegos = new javax.swing.JTable();
+        txtTitulo = new javax.swing.JTextField();
+        txtConsola = new javax.swing.JTextField();
+        txtGenero = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         botonListaDes = new javax.swing.JButton();
@@ -52,13 +81,36 @@ public class AdminJuegos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel14.setText("Precio");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, -1, -1));
+
+        jLabel13.setText("Lanzamiento");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, -1, -1));
+        getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 210, -1));
+        getContentPane().add(txtLanzamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 210, -1));
+
+        jLabel12.setText("Genero");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, -1, -1));
+
+        jLabel11.setText("Consola");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, -1, -1));
+
+        jLabel10.setText("Titulo");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, -1, -1));
+
+        jLabel9.setText("ID Juegos");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Agregajue.png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 370, 70));
+
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Retroceder");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 330, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 380, -1, -1));
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Colocar juego");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 340, -1, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 162440.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -66,12 +118,17 @@ public class AdminJuegos extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 190, 30));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 190, 30));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 190, 30));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 190, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbJuegos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -82,13 +139,13 @@ public class AdminJuegos extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbJuegos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 460, 220));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, 210, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 210, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, 210, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 210, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 460, 220));
+        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, 210, -1));
+        getContentPane().add(txtConsola, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 210, -1));
+        getContentPane().add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, 210, -1));
+        getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 210, -1));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton5.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +201,7 @@ public class AdminJuegos extends javax.swing.JFrame {
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 210, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo5.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 86, 850, 320));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 106, -1, 300));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 174839.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 30));
@@ -170,24 +227,36 @@ public class AdminJuegos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        Menu vc =new Menu();
-        vc.setVisible(true);
-        dispose();
+        try {
+            // TODO add your handling code here:
+            Menu vc =new Menu();
+            vc.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminJuegos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void BotonTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTiendaActionPerformed
-        // TODO add your handling code here:
-        Menu vc =new Menu();
-        vc.setVisible(true);
-        dispose();
+        try {
+            // TODO add your handling code here:
+            Menu vc =new Menu();
+            vc.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminJuegos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_BotonTiendaActionPerformed
 
     private void botonListaDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListaDesActionPerformed
-        // TODO add your handling code here:
-        VistaListaDeseado vc =new VistaListaDeseado();
-        vc.setVisible(true);
-        dispose();
+        try {
+            // TODO add your handling code here:
+            VistaListaDeseado vc =new VistaListaDeseado();
+            vc.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminJuegos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_botonListaDesActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -203,6 +272,29 @@ public class AdminJuegos extends javax.swing.JFrame {
         vc.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+      int id = Integer.parseInt(txtId.getText());
+String titulo = txtTitulo.getText();
+String consola = txtConsola.getText();
+String genero = txtGenero.getText();  // Falta capturar el género
+int lanzamiento = Integer.parseInt(txtLanzamiento.getText());
+int precio = Integer.parseInt(txtPrecio.getText()); // Usa double para precio
+
+Juego juego = new Juego(id, titulo, consola, genero, lanzamiento, precio);
+
+try {
+    boolean si = controladorjuegos.guardar(juego);
+    if (si) {
+        JOptionPane.showMessageDialog(null, "Se agregó el juego con éxito.");
+        mostrarJuegosAccion();
+    }
+} catch (SQLException ex) {
+    Logger.getLogger(AdminJuegos.class.getName()).log(Level.SEVERE, null, ex);
+}
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,18 +341,27 @@ public class AdminJuegos extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTable tbJuegos;
+    private javax.swing.JTextField txtConsola;
+    private javax.swing.JTextField txtGenero;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtLanzamiento;
+    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 }

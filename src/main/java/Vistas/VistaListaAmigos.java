@@ -4,19 +4,41 @@
  */
 package Vistas;
 
+import Controlador.ControladorAmigos;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ANDRES FELIPE
  */
 public class VistaListaAmigos extends javax.swing.JFrame {
 
+    ControladorAmigos controladoramigos;
     /**
      * Creates new form VistaListaAmigos
      */
     public VistaListaAmigos() {
         initComponents();
+        controladoramigos = new ControladorAmigos();
+        llenarTablaAmigos();
     }
 
+    private void llenarTablaAmigos() {
+    DefaultTableModel model = new DefaultTableModel();
+    model.setColumnIdentifiers(new Object[]{"ID", "Nombre"}); // Columnas
+
+    try {
+        ControladorAmigos controlador = new ControladorAmigos();
+        DefaultTableModel modeloDatos = controlador.buscarAmigos();
+        tbAmigos.setModel(modeloDatos); // Asigna el modelo a la tabla
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error al cargar amigos: " + e.getMessage());
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,9 +52,9 @@ public class VistaListaAmigos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtAmigos = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbAmigos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -56,10 +78,15 @@ public class VistaListaAmigos extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 140, 30));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 140, 30));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 170, 50));
+        getContentPane().add(txtAmigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 170, 50));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbAmigos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -70,7 +97,7 @@ public class VistaListaAmigos extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbAmigos);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 500, 240));
 
@@ -84,11 +111,27 @@ public class VistaListaAmigos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Menu vc = new Menu();
-        vc.setVisible(true);
-        dispose();
+        try {
+            // TODO add your handling code here:
+            Menu vc = new Menu();
+            vc.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaListaAmigos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String amigos = txtAmigos.getText();
+        try {
+            boolean si = controladoramigos.agregarAmigo(amigos);
+            llenarTablaAmigos();
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaListaAmigos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,7 +176,7 @@ public class VistaListaAmigos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbAmigos;
+    private javax.swing.JTextField txtAmigos;
     // End of variables declaration//GEN-END:variables
 }

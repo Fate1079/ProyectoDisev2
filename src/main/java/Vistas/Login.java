@@ -5,8 +5,12 @@
 package Vistas;
 
 import Controlador.ControladorCliente;
+import Controlador.DataBaseConfing;
 import Modelo.Usuario;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -111,14 +115,36 @@ public class Login extends javax.swing.JFrame {
         VentanaAdmin panelAdmin = new VentanaAdmin();
         panelAdmin.setVisible(true);
         dispose(); 
-        }else if (cliente!= null && cliente.getContraseña()!= null && cliente.getContraseña().equals(contra)) {
-        Menu panelCliente = new Menu();
-        panelCliente.setVisible(true);
-        dispose();
-        } else {
-        JOptionPane.showMessageDialog(this, "El usuario o la contraseña son incorrectos.");
+        }else{
+             
+                String username = txtNombre.getText();
+                
+                String password = txtContra.getText();
+
+                boolean success = DataBaseConfing.login(username, password);
+                if (success) {
+                    try {
+                        JOptionPane.showMessageDialog(null, "Se encontro el usuario");
+                        Menu vc = new Menu();
+                        vc.setVisible(true);
+                        dispose();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrectos.");
+                }
         }
+
+        
+        
     }//GEN-LAST:event_BotonLoginActionPerformed
+
+    
+    // if (nombre.equalsIgnoreCase("admin") && contra.equals("123")) {
+        //VentanaAdmin panelAdmin = new VentanaAdmin();
+    //panelAdmin.setVisible(true);
+        //dispose();
 
     private void BotonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegisterActionPerformed
         // TODO add your handling code here:

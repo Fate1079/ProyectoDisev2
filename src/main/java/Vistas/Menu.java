@@ -4,19 +4,66 @@
  */
 package Vistas;
 
+import Controlador.ControladorJuegos;
+import Controlador.DataBaseConfing;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ANDRES FELIPE
  */
 public class Menu extends javax.swing.JFrame {
-
+ControladorJuegos controladorjuegos;
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public Menu() throws SQLException {
         initComponents();
+        controladorjuegos =  new ControladorJuegos();
+        mostrarJuegosTerror();
+        mostrarJuegosAccion();
+        mostrarJuegosComedia();
+        
+        
     }
+    
+    private void mostrarJuegosTerror() {
+    try {
+        DefaultTableModel modelo = controladorjuegos.buscarJuegosTerror();
+        tbJuegosTerror.setModel(modelo); // Se asigna a la tabla de comedia
+    } catch (SQLException ex) {
+        Logger.getLogger(AdminJuegos.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(null, "Error al buscar juegos de terror.");
+    }
+}
+    
+     private void mostrarJuegosAccion() {
+    try {
+        DefaultTableModel modelo = controladorjuegos.buscarJuegosAccion();
+        tbJuegosAccion.setModel(modelo); // Se asigna a la tabla de comedia
+    } catch (SQLException ex) {
+        Logger.getLogger(AdminJuegos.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(null, "Error al buscar juegos de terror.");
+    }
+}
 
+     
+     private void mostrarJuegosComedia() {
+    try {
+        DefaultTableModel modelo = controladorjuegos.buscarJuegosComedia();
+        tbJuegosComedia.setModel(modelo); // Se asigna a la tabla de comedia
+    } catch (SQLException ex) {
+        Logger.getLogger(AdminJuegos.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(null, "Error al buscar juegos de terror.");
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,11 +81,11 @@ public class Menu extends javax.swing.JFrame {
         botonBiblioteca = new javax.swing.JButton();
         BotonTienda = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tbJuegosComedia = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbJuegosTerror = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbJuegosAccion = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -99,7 +146,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(BotonTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 90, 30));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tbJuegosComedia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -110,11 +157,11 @@ public class Menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tbJuegosComedia);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 250, 80));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 370, 160));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbJuegosTerror.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -125,11 +172,11 @@ public class Menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tbJuegosTerror);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 250, 80));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 310, 130));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbJuegosAccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -140,9 +187,9 @@ public class Menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbJuegosAccion);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 250, 80));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 370, 140));
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Buscar");
@@ -199,10 +246,14 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonTiendaActionPerformed
 
     private void botonListaDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListaDesActionPerformed
+    try {
         // TODO add your handling code here:
         VistaListaDeseado vc = new VistaListaDeseado();
         vc.setVisible(true);
         dispose();
+    } catch (SQLException ex) {
+        Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_botonListaDesActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -256,11 +307,16 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                try {
+                    new Menu().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
-
+    
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonTienda;
     private javax.swing.JButton botonBiblioteca;
@@ -278,9 +334,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbJuegosAccion;
+    private javax.swing.JTable tbJuegosComedia;
+    private javax.swing.JTable tbJuegosTerror;
     // End of variables declaration//GEN-END:variables
 }

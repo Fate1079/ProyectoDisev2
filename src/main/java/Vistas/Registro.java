@@ -5,6 +5,7 @@
 package Vistas;
 
 import Controlador.ControladorCliente;
+import Controlador.DataBaseConfing;
 import Modelo.Usuario;
 import javax.swing.JOptionPane;
 
@@ -111,11 +112,12 @@ public class Registro extends javax.swing.JFrame {
         String contra= txtContra.getText();
         Usuario usuario= new Usuario(nombre, contra);
         boolean respuesta = controladorC.Guardar(usuario);
-        if(respuesta){
-            JOptionPane.showMessageDialog(null , "Se registro con exitoso");
-        }else{
-            JOptionPane.showMessageDialog(null, "No se logro registrar debio pasar algun error");
-        }
+                boolean success = DataBaseConfing.register(nombre, contra);
+                if (success) {
+                    JOptionPane.showMessageDialog(null,"Usuario registrado con éxito.");
+                } else {
+                    JOptionPane.showMessageDialog(null,"Error al registrar el usuario. Es posible que el nombre ya esté registrado.");
+                }
         
     }//GEN-LAST:event_RegistrarActionPerformed
 

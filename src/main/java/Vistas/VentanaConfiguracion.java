@@ -4,6 +4,10 @@
  */
 package Vistas;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ANDRES FELIPE
@@ -73,10 +77,14 @@ public class VentanaConfiguracion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        Menu vc = new Menu();
-        vc.setVisible(true);
-        dispose();
+        try {
+            // TODO add your handling code here:
+            Menu vc = new Menu();
+            vc.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(VentanaConfiguracion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
