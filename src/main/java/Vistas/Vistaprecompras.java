@@ -4,18 +4,60 @@
  */
 package Vistas;
 
+import Controlador.ControladorListaDeseados;
+import Controlador.DataBaseConfing;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ANDRES FELIPE
  */
 public class Vistaprecompras extends javax.swing.JFrame {
-
+    ControladorListaDeseados controladorDes;
     /**
      * Creates new form Vistaprecompras
      */
     public Vistaprecompras() {
         initComponents();
+        controladorDes= new ControladorListaDeseados();
     }
+    
+    public void buscarJuegoPorNombre(String nombreJuego) throws SQLException {
+    DefaultTableModel modelo = new DefaultTableModel();
+    modelo.setColumnIdentifiers(new Object[]{"ID", "Título", "Consola", "Género", "Año", "Precio"});
+
+    String consulta = "SELECT id, titulo, consola, genero, anio_lanzamiento, precio FROM juego WHERE titulo = ?";
+
+    try (Connection conexion = DataBaseConfing.getConnection();
+         PreparedStatement stmt = conexion.prepareStatement(consulta)) {
+
+        stmt.setString(1, nombreJuego); // Búsqueda exacta
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) { // Solo agrega una fila (el primer resultado encontrado)
+                modelo.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("titulo"),
+                    rs.getString("consola"),
+                    rs.getString("genero"),
+                    rs.getInt("anio_lanzamiento"),
+                    rs.getDouble("precio")
+                });
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró el juego con el nombre: " + nombreJuego);
+            }
+        }
+    }
+
+    // Asignar modelo a la tabla con solo ese juego
+    tbJuegos.setModel(modelo);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,7 +75,7 @@ public class Vistaprecompras extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbJuegos = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         botonListaDes = new javax.swing.JButton();
@@ -41,7 +83,7 @@ public class Vistaprecompras extends javax.swing.JFrame {
         BotonTienda = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtJuego = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -70,12 +112,22 @@ public class Vistaprecompras extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, -1, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 162440.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 190, 30));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 190, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbJuegos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -86,11 +138,16 @@ public class Vistaprecompras extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbJuegos);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 460, 220));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton5.png"))); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 170, 30));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton4.png"))); // NOI18N
@@ -136,7 +193,7 @@ public class Vistaprecompras extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 240, 70, 20));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 210, -1));
+        getContentPane().add(txtJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 210, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo5.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 86, 850, 320));
@@ -159,27 +216,53 @@ public class Vistaprecompras extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String nombreJuego = txtJuego.getText().trim(); 
+
+    if (!nombreJuego.isEmpty()) {
+     
+       
+            try {
+                buscarJuegoPorNombre(nombreJuego);
+            } catch (SQLException ex) {
+                Logger.getLogger(Vistaprecompras.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    } else {
+        JOptionPane.showMessageDialog(null, "Ingrese el nombre del juego a buscar.");
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        Menu vc = new Menu();
-        vc.setVisible(true);
-        dispose();
+        try {
+            // TODO add your handling code here:
+            Menu vc = new Menu();
+            vc.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Vistaprecompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void botonListaDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListaDesActionPerformed
-        // TODO add your handling code here:
-         VistaListaDeseado vc = new VistaListaDeseado();
-        vc.setVisible(true);
-        dispose();
+        try {
+            // TODO add your handling code here:
+            VistaListaDeseado vc = new VistaListaDeseado();
+            vc.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Vistaprecompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_botonListaDesActionPerformed
 
     private void BotonTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTiendaActionPerformed
-        // TODO add your handling code here:
-        Menu vc = new Menu();
-        vc.setVisible(true);
-        dispose();
+        try {
+            // TODO add your handling code here:
+            Menu vc = new Menu();
+            vc.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Vistaprecompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_BotonTiendaActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -188,6 +271,42 @@ public class Vistaprecompras extends javax.swing.JFrame {
         vc.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        VistaCompras vc = new VistaCompras();
+        vc.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        VentanaConfiguracion vc = new VentanaConfiguracion();
+        vc.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String tituloJuego = txtJuego.getText().trim(); // Obtiene el nombre del juego
+
+    if (!tituloJuego.isEmpty()) {
+        
+           
+            try {
+              boolean  agregado = controladorDes.agregarJuegoListaDeseados(tituloJuego);
+               if (agregado) {
+                JOptionPane.showMessageDialog(null, "Juego agregado a la lista de deseados.");
+            }
+            } catch (SQLException ex) {
+                Logger.getLogger(Vistaprecompras.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        
+    } else {
+        JOptionPane.showMessageDialog(null, "Ingrese el nombre del juego a agregar.");
+    }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,7 +361,7 @@ public class Vistaprecompras extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbJuegos;
+    private javax.swing.JTextField txtJuego;
     // End of variables declaration//GEN-END:variables
 }

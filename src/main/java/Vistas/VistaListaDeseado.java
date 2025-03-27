@@ -4,19 +4,34 @@
  */
 package Vistas;
 
+import Controlador.ControladorListaDeseados;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ANDRES FELIPE
  */
 public class VistaListaDeseado extends javax.swing.JFrame {
-
+    ControladorListaDeseados controladorDes;
     /**
      * Creates new form VistaListaDeseado
      */
-    public VistaListaDeseado() {
+    public VistaListaDeseado() throws SQLException {
         initComponents();
+        controladorDes= new ControladorListaDeseados();
+        btnBuscarListaDeseados();
     }
 
+    
+    private void btnBuscarListaDeseados() throws SQLException{                               
+    
+        DefaultTableModel modelo = controladorDes.buscarListaDeseados();
+        tbListaDeseados.setModel(modelo); 
+    
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +47,7 @@ public class VistaListaDeseado extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbListaDeseados = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,7 +75,7 @@ public class VistaListaDeseado extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 140, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbListaDeseados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -71,7 +86,7 @@ public class VistaListaDeseado extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbListaDeseados);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 500, 240));
 
@@ -82,10 +97,14 @@ public class VistaListaDeseado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Menu vc = new Menu();
-        vc.setVisible(true);
-        dispose();
+        try {
+            // TODO add your handling code here:
+            Menu vc = new Menu();
+            vc.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaListaDeseado.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -118,7 +137,11 @@ public class VistaListaDeseado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaListaDeseado().setVisible(true);
+                try {
+                    new VistaListaDeseado().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(VistaListaDeseado.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -131,6 +154,6 @@ public class VistaListaDeseado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbListaDeseados;
     // End of variables declaration//GEN-END:variables
 }

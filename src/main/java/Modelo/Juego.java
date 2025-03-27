@@ -14,9 +14,9 @@ public class Juego {
     private String consola;
     private String genero;
     private int anioLanzamiento;
-    private double precio;
+    private int precio;
 
-    public Juego(int id, String titulo, String consola, String genero, int anioLanzamiento, double precio) {
+    public Juego(int id, String titulo, String consola, String genero, int anioLanzamiento, int precio) {
         this.id = id;
         this.titulo = titulo;
         this.consola = consola;
@@ -40,7 +40,7 @@ public class Juego {
     public int getAnioLanzamiento() { return anioLanzamiento; }
     public void setAnioLanzamiento(int anioLanzamiento) { this.anioLanzamiento = anioLanzamiento; }
 
-    public double getPrecio() { return precio; }
-    public void setPrecio(double precio) { this.precio = precio; }
+    public int getPrecio() { return precio; }
+    public void setPrecio(int precio) { this.precio = precio; }
 }
 
