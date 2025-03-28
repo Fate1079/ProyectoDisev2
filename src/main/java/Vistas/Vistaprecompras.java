@@ -4,8 +4,9 @@
  */
 package Vistas;
 
-import Controlador.ControladorListaDeseados;
-import Controlador.DataBaseConfing;
+import Repositorio.RepositorioListaDeseados;
+import Repositorio.DataBaseConfing;
+import Service.ServiceListaDeseado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,13 +21,15 @@ import javax.swing.table.DefaultTableModel;
  * @author ANDRES FELIPE
  */
 public class Vistaprecompras extends javax.swing.JFrame {
-    ControladorListaDeseados controladorDes;
+    RepositorioListaDeseados controladorDes;
+    ServiceListaDeseado serviceDeseado;
     /**
      * Creates new form Vistaprecompras
      */
     public Vistaprecompras() {
         initComponents();
-        controladorDes= new ControladorListaDeseados();
+        serviceDeseado= new ServiceListaDeseado();
+        controladorDes= new RepositorioListaDeseados();
     }
     
     public void buscarJuegoPorNombre(String nombreJuego) throws SQLException {
@@ -294,7 +297,7 @@ public class Vistaprecompras extends javax.swing.JFrame {
         
            
             try {
-              boolean  agregado = controladorDes.agregarJuegoListaDeseados(tituloJuego);
+              boolean  agregado = serviceDeseado.agregarListaDeseo(tituloJuego);
                if (agregado) {
                 JOptionPane.showMessageDialog(null, "Juego agregado a la lista de deseados.");
             }

@@ -4,8 +4,8 @@
  */
 package Vistas;
 
-import Controlador.ControladorCliente;
-import Controlador.DataBaseConfing;
+import Repositorio.RepositorioCliente;
+import Repositorio.DataBaseConfing;
 import Modelo.Usuario;
 import javax.swing.JOptionPane;
 
@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
  */
 public class Registro extends javax.swing.JFrame {
 
-    ControladorCliente controladorC;
+    RepositorioCliente controladorC;
     /**
      * Creates new form Registro
      */
     public Registro() {
-        controladorC= new ControladorCliente();
+        controladorC= new RepositorioCliente();
         initComponents();
     }
 

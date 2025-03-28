@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
-package Controlador;
+package Repositorio;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ANDRES FELIPE
  */
-public class ControladorListaDeseados {
+public class RepositorioListaDeseados {
 
    public boolean agregarJuegoListaDeseados(String tituloJuego) throws SQLException {
     String obtenerUsuarioId = "SELECT id FROM users WHERE username = (SELECT username FROM users LIMIT 1)";

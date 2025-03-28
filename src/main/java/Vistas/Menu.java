@@ -4,8 +4,8 @@
  */
 package Vistas;
 
-import Controlador.ControladorJuegos;
-import Controlador.DataBaseConfing;
+import Repositorio.RepositoriJuegos;
+import Repositorio.DataBaseConfing;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,13 +20,13 @@ import javax.swing.table.DefaultTableModel;
  * @author ANDRES FELIPE
  */
 public class Menu extends javax.swing.JFrame {
-ControladorJuegos controladorjuegos;
+RepositoriJuegos controladorjuegos;
     /**
      * Creates new form Menu
      */
     public Menu() throws SQLException {
         initComponents();
-        controladorjuegos =  new ControladorJuegos();
+        controladorjuegos =  new RepositoriJuegos();
         mostrarJuegosTerror();
         mostrarJuegosAccion();
         mostrarJuegosComedia();

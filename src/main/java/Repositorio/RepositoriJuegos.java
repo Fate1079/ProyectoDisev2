@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
-package Controlador;
+package Repositorio;
 
 import Modelo.Juego;
 import java.sql.Connection;
@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ANDRES FELIPE
  */
-public class ControladorJuegos {
+public class RepositoriJuegos {
 
  public boolean guardar(Juego juego) throws SQLException {
     String consulta = "INSERT INTO juego (titulo, consola, genero, anio_lanzamiento, precio) VALUES ('" 

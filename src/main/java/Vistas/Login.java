@@ -4,8 +4,8 @@
  */
 package Vistas;
 
-import Controlador.ControladorCliente;
-import Controlador.DataBaseConfing;
+import Repositorio.RepositorioCliente;
+import Repositorio.DataBaseConfing;
 import Modelo.Usuario;
 import java.net.URL;
 import java.sql.SQLException;
@@ -19,12 +19,12 @@ import javax.swing.JOptionPane;
  * @author ANDRES FELIPE
  */
 public class Login extends javax.swing.JFrame {
-    ControladorCliente controladorC;
+    RepositorioCliente controladorC;
     /**
      * Creates new form Login
      */
     public Login() {
-        controladorC= new ControladorCliente();
+        controladorC= new RepositorioCliente();
         initComponents();
      
     }

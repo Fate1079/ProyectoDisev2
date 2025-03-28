@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controlador;
+package Repositorio;
 
 import Modelo.Usuario;
 import Singleton.Singleton;
@@ -12,10 +12,10 @@ import Util.Lista;
  *
  * @author ANDRES FELIPE
  */
-public class ControladorCliente {
+public class RepositorioCliente {
      Lista<Usuario> listaUsuario;
 
-    public ControladorCliente() {
+    public RepositorioCliente() {
         listaUsuario= Singleton.getInstancia().getListaEmpleados();
     }
     
