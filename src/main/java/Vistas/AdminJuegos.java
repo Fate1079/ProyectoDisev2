@@ -4,8 +4,9 @@
  */
 package Vistas;
 
-import Controlador.ControladorJuegos;
+import Repositorio.RepositoriJuegos;
 import Modelo.Juego;
+import Service.ServiceJuegos;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,13 +18,15 @@ import javax.swing.table.DefaultTableModel;
  * @author ANDRES FELIPE
  */
 public class AdminJuegos extends javax.swing.JFrame {
-    ControladorJuegos controladorjuegos;
+    RepositoriJuegos controladorjuegos;
+    ServiceJuegos serviceJuegos;
     /**
      * Creates new form AdminJuegos
      */
     public AdminJuegos() {
         initComponents();
-        controladorjuegos= new ControladorJuegos();
+        controladorjuegos= new RepositoriJuegos();
+        serviceJuegos= new ServiceJuegos();
         mostrarJuegosAccion();
     }
 
@@ -285,7 +288,7 @@ int precio = Integer.parseInt(txtPrecio.getText()); // Usa double para precio
 Juego juego = new Juego(id, titulo, consola, genero, lanzamiento, precio);
 
 try {
-    boolean si = controladorjuegos.guardar(juego);
+    boolean si = serviceJuegos.agregarjuego(juego);
     if (si) {
         JOptionPane.showMessageDialog(null, "Se agregó el juego con éxito.");
         mostrarJuegosAccion();

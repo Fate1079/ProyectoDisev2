@@ -4,7 +4,8 @@
  */
 package Vistas;
 
-import Controlador.ControladorListaDeseados;
+import Repositorio.RepositorioListaDeseados;
+import Service.ServiceListaDeseado;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,13 +16,15 @@ import javax.swing.table.DefaultTableModel;
  * @author ANDRES FELIPE
  */
 public class VistaListaDeseado extends javax.swing.JFrame {
-    ControladorListaDeseados controladorDes;
+    RepositorioListaDeseados controladorDes;
+    ServiceListaDeseado serviceDes;
     /**
      * Creates new form VistaListaDeseado
      */
     public VistaListaDeseado() throws SQLException {
         initComponents();
-        controladorDes= new ControladorListaDeseados();
+        serviceDes = new ServiceListaDeseado();
+        controladorDes= new RepositorioListaDeseados();
         btnBuscarListaDeseados();
     }
 

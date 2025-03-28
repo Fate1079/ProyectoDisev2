@@ -4,7 +4,8 @@
  */
 package Vistas;
 
-import Controlador.ControladorAmigos;
+import Repositorio.RepositorioAmigos;
+import Service.ServiceAmigos;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,13 +18,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaListaAmigos extends javax.swing.JFrame {
 
-    ControladorAmigos controladoramigos;
+    ServiceAmigos serviceamigos;
     /**
      * Creates new form VistaListaAmigos
      */
     public VistaListaAmigos() {
         initComponents();
-        controladoramigos = new ControladorAmigos();
+        serviceamigos= new ServiceAmigos();
         llenarTablaAmigos();
     }
 
@@ -32,9 +33,9 @@ public class VistaListaAmigos extends javax.swing.JFrame {
     model.setColumnIdentifiers(new Object[]{"ID", "Nombre"}); // Columnas
 
     try {
-        ControladorAmigos controlador = new ControladorAmigos();
+        RepositorioAmigos controlador = new RepositorioAmigos();
         DefaultTableModel modeloDatos = controlador.buscarAmigos();
-        tbAmigos.setModel(modeloDatos); // Asigna el modelo a la tabla
+        tbAmigos.setModel(modeloDatos); 
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(this, "Error al cargar amigos: " + e.getMessage());
     }
@@ -125,7 +126,7 @@ public class VistaListaAmigos extends javax.swing.JFrame {
         // TODO add your handling code here:
         String amigos = txtAmigos.getText();
         try {
-            boolean si = controladoramigos.agregarAmigo(amigos);
+            boolean si = serviceamigos.agregaramigos(amigos);
             llenarTablaAmigos();
         } catch (SQLException ex) {
             Logger.getLogger(VistaListaAmigos.class.getName()).log(Level.SEVERE, null, ex);
