@@ -4,8 +4,7 @@
  */
 package Vistas;
 
-import Repositorio.RepositorioAmigos;
-import Repositorio.RepositorioCompra;
+import Repositorio.RepositorioHistorial;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,28 +16,27 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ANDRES FELIPE
  */
-public class Biblioteca extends javax.swing.JFrame {
-    RepositorioCompra controladorDes;
+public class VentanaHistorial extends javax.swing.JFrame {
+    RepositorioHistorial controladorDes;
     /**
-     * Creates new form NewJFrame
+     * Creates new form VentanaHistorial
      */
-    public Biblioteca() {
-        controladorDes = new RepositorioCompra();
-       SwingUtilities.invokeLater(() -> llenarTablaPedidos());
+    public VentanaHistorial() {
+        controladorDes = new RepositorioHistorial();
         initComponents();
+        SwingUtilities.invokeLater(() -> llenarTablaHistorial());
     }
     
-    
-     private void llenarTablaPedidos() {
+    private void llenarTablaHistorial() {
     try {
-        DefaultTableModel modeloDatos = controladorDes.buscarJuegosComprados();
-        if (TbBiblioteca == null) {
-            System.out.println("Error: TbBiblioteca es null.");
+        DefaultTableModel modeloDatos = controladorDes.buscarHistorial();
+        if (tbHistorial == null) {
+            System.out.println("Error: TbHistorial es null.");
             return;
         }
-        TbBiblioteca.setModel(modeloDatos);
+        tbHistorial.setModel(modeloDatos);
     } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, "Error al cargar pedidos: " + e.getMessage());
+        JOptionPane.showMessageDialog(this, "Error al cargar historial: " + e.getMessage());
     }
 }
 
@@ -52,13 +50,14 @@ public class Biblioteca extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel6 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         botonListaDes = new javax.swing.JButton();
         botonBiblioteca = new javax.swing.JButton();
         BotonTienda = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        TbBiblioteca = new javax.swing.JTable();
+        tbHistorial = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -70,8 +69,16 @@ public class Biblioteca extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Biblio.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 390, 90));
+        jLabel6.setText("Regresar");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 370, -1, -1));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 360, 140, 30));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton5.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +120,7 @@ public class Biblioteca extends javax.swing.JFrame {
         });
         getContentPane().add(BotonTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 90, 30));
 
-        TbBiblioteca.setModel(new javax.swing.table.DefaultTableModel(
+        tbHistorial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -124,7 +131,7 @@ public class Biblioteca extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(TbBiblioteca);
+        jScrollPane2.setViewportView(tbHistorial);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 650, 260));
 
@@ -145,10 +152,10 @@ public class Biblioteca extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 106, -1, 300));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 174839.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo4.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 890, 390));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 920, 390));
 
         jLabel5.setText("jLabel5");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -156,27 +163,19 @@ public class Biblioteca extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonBibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBibliotecaActionPerformed
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        Biblioteca vc = new Biblioteca();
+        VentanaConfiguracion vc = new VentanaConfiguracion();
         vc.setVisible(true);
         dispose();
-    }//GEN-LAST:event_botonBibliotecaActionPerformed
+    }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void BotonTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTiendaActionPerformed
-        try {
-            // TODO add your handling code here:
-            Menu vc = new Menu();
-            vc.setVisible(true);
-            dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_BotonTiendaActionPerformed
+        VistaListaAmigos vc = new VistaListaAmigos();
+        vc.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void botonListaDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListaDesActionPerformed
         try {
@@ -189,19 +188,34 @@ public class Biblioteca extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonListaDesActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void botonBibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBibliotecaActionPerformed
         // TODO add your handling code here:
-        VistaListaAmigos vc = new VistaListaAmigos();
+        Biblioteca vc = new Biblioteca();
         vc.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_botonBibliotecaActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void BotonTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTiendaActionPerformed
+        try {
+            // TODO add your handling code here:
+            Menu vc = new Menu();
+            vc.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BotonTiendaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         VentanaConfiguracion vc = new VentanaConfiguracion();
         vc.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,31 +234,30 @@ public class Biblioteca extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Biblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Biblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Biblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Biblioteca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaHistorial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Biblioteca().setVisible(true);
+                new VentanaHistorial().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonTienda;
-    private javax.swing.JTable TbBiblioteca;
     private javax.swing.JButton botonBiblioteca;
     private javax.swing.JButton botonListaDes;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
@@ -255,5 +268,6 @@ public class Biblioteca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbHistorial;
     // End of variables declaration//GEN-END:variables
 }

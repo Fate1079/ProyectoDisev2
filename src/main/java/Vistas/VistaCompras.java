@@ -4,9 +4,24 @@
  */
 package Vistas;
 
+import Modelo.Historial;
+import Modelo.Juego;
+import Modelo.Pedido;
+import Repositorio.DataBaseConfing;
+import Repositorio.RepositoriJuegos;
+import Repositorio.RepositorioCompra;
+import Repositorio.RepositorioHistorial;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,12 +29,59 @@ import java.util.logging.Logger;
  */
 public class VistaCompras extends javax.swing.JFrame {
 
+     RepositoriJuegos controladorjuegos;
+     RepositorioCompra controladorCompra;
+     RepositorioHistorial controladorHistorial;
     /**
      * Creates new form VistaCompras
      */
     public VistaCompras() {
+        controladorjuegos= new RepositoriJuegos();
+       controladorCompra = new RepositorioCompra();
+       controladorHistorial= new RepositorioHistorial();
         initComponents();
+        mostrarJuegosTerror();
     }
+    
+     private void mostrarJuegosTerror() {
+    try {
+        DefaultTableModel modelo = controladorjuegos.buscarJuegos();
+        tbJuegos.setModel(modelo);
+    } catch (SQLException ex) {
+        Logger.getLogger(AdminJuegos.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(null, "Error al buscar juegos de terror.");
+    }
+}
+     
+     public void buscarJuegoPorNombre(String nombreJuego) throws SQLException {
+    DefaultTableModel modelo = new DefaultTableModel();
+    modelo.setColumnIdentifiers(new Object[]{"ID", "Título", "Consola", "Género", "Año", "Precio"});
+
+    String consulta = "SELECT id, titulo, consola, genero, anio_lanzamiento, precio FROM juego WHERE titulo = ?";
+
+    try (Connection conexion = DataBaseConfing.getConnection();
+         PreparedStatement stmt = conexion.prepareStatement(consulta)) {
+
+        stmt.setString(1, nombreJuego); // Búsqueda exacta
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) { // Solo agrega una fila (el primer resultado encontrado)
+                modelo.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("titulo"),
+                    rs.getString("consola"),
+                    rs.getString("genero"),
+                    rs.getInt("anio_lanzamiento"),
+                    rs.getDouble("precio")
+                });
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró el juego con el nombre: " + nombreJuego);
+            }
+        }
+    }
+
+    // Asignar modelo a la tabla con solo ese juego
+    tbJuegos.setModel(modelo);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,6 +92,8 @@ public class VistaCompras extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtIdJuegos = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -40,11 +104,11 @@ public class VistaCompras extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        tbJuegos = new javax.swing.JTable();
+        txtMetodoPago = new javax.swing.JTextField();
+        txtPuntos = new javax.swing.JTextField();
+        txtQr = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         botonListaDes = new javax.swing.JButton();
@@ -52,7 +116,7 @@ public class VistaCompras extends javax.swing.JFrame {
         BotonTienda = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -60,25 +124,30 @@ public class VistaCompras extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(txtIdJuegos, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 210, -1));
+
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("ID Del juegos");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, -1, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Compras.png"))); // NOI18N
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 410, 70));
 
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("QR");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, -1, -1));
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Puntos");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, -1, -1));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Metodo de pago");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, -1, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Precio");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, -1, -1));
 
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Retroceder");
@@ -97,9 +166,14 @@ public class VistaCompras extends javax.swing.JFrame {
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 190, 30));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 190, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbJuegos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -110,13 +184,13 @@ public class VistaCompras extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbJuegos);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 460, 220));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, 210, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 210, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, 210, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 210, -1));
+        getContentPane().add(txtMetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 210, -1));
+        getContentPane().add(txtPuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 210, -1));
+        getContentPane().add(txtQr, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 210, -1));
+        getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, 210, -1));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton5.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +243,7 @@ public class VistaCompras extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 70, 20));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 210, -1));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 210, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo5.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 106, 860, 300));
@@ -195,6 +269,21 @@ public class VistaCompras extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+         String nombreJuego = txtNombre.getText().trim(); 
+
+    if (!nombreJuego.isEmpty()) {
+     
+       
+            try {
+                buscarJuegoPorNombre(nombreJuego);
+            } catch (SQLException ex) {
+                Logger.getLogger(Vistaprecompras.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    } else {
+        JOptionPane.showMessageDialog(null, "Ingrese el nombre del juego a buscar.");
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -240,6 +329,55 @@ public class VistaCompras extends javax.swing.JFrame {
         vc.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    try {
+    int idJuego = Integer.parseInt(txtIdJuegos.getText().trim());
+    double precio = Double.parseDouble(txtPrecio.getText().trim());
+    String metodoPago = txtMetodoPago.getText().trim();
+    int puntos = Integer.parseInt(txtPuntos.getText().trim());
+    String qr = txtQr.getText().trim();
+
+    if (metodoPago.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ingrese el método de pago.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Crear el objeto Juego
+    Juego juego = new Juego(idJuego, "", "", "", 0, (int) precio);
+    ArrayList<Juego> juegosComprados = new ArrayList<>();
+    juegosComprados.add(juego);
+
+    // Crear el objeto Pedido
+    Pedido pedido = new Pedido(0, null, juegosComprados);
+
+    // Intentar guardar el pedido
+    boolean compraExitosa = controladorCompra.guardarPedido(pedido);
+
+    if (compraExitosa) {
+     
+        java.sql.Date fechaCompra = new java.sql.Date(System.currentTimeMillis());
+
+        
+        Historial historial = new Historial(0, juego.getTitulo(), fechaCompra, String.valueOf(precio));
+
+        boolean historialGuardado = controladorHistorial.guardarHistorial(historial);
+
+        if (historialGuardado) {
+            JOptionPane.showMessageDialog(this, "Compra realizada con éxito y guardada en el historial.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Compra realizada, pero no se pudo guardar en el historial.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Error en la compra. Verifique los datos.");
+    }
+} catch (NumberFormatException ex) {
+    JOptionPane.showMessageDialog(this, "Ingrese valores válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+} catch (SQLException ex) {
+    JOptionPane.showMessageDialog(this, "Error en la base de datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+}
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,6 +427,7 @@ public class VistaCompras extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -298,11 +437,12 @@ public class VistaCompras extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTable tbJuegos;
+    private javax.swing.JTextField txtIdJuegos;
+    private javax.swing.JTextField txtMetodoPago;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtPuntos;
+    private javax.swing.JTextField txtQr;
     // End of variables declaration//GEN-END:variables
 }

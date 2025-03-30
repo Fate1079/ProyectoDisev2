@@ -6,6 +6,7 @@ package Vistas;
 
 import Repositorio.RepositorioListaDeseados;
 import Repositorio.DataBaseConfing;
+import Repositorio.RepositoriJuegos;
 import Service.ServiceListaDeseado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Vistaprecompras extends javax.swing.JFrame {
     RepositorioListaDeseados controladorDes;
+    RepositoriJuegos controladorjuegos;
     ServiceListaDeseado serviceDeseado;
     /**
      * Creates new form Vistaprecompras
@@ -29,9 +31,21 @@ public class Vistaprecompras extends javax.swing.JFrame {
     public Vistaprecompras() {
         initComponents();
         serviceDeseado= new ServiceListaDeseado();
+        controladorjuegos= new RepositoriJuegos();
         controladorDes= new RepositorioListaDeseados();
+        mostrarJuegosTerror();
     }
     
+    
+    private void mostrarJuegosTerror() {
+    try {
+        DefaultTableModel modelo = controladorjuegos.buscarJuegos();
+        tbJuegos.setModel(modelo);
+    } catch (SQLException ex) {
+        Logger.getLogger(AdminJuegos.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(null, "Error al buscar juegos de terror.");
+    }
+}
     public void buscarJuegoPorNombre(String nombreJuego) throws SQLException {
     DefaultTableModel modelo = new DefaultTableModel();
     modelo.setColumnIdentifiers(new Object[]{"ID", "Título", "Consola", "Género", "Año", "Precio"});
