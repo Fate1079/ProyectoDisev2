@@ -111,7 +111,7 @@ public class Registro extends javax.swing.JFrame {
         String nombre = txtNombre.getText();
         String contra= txtContra.getText();
         Usuario usuario= new Usuario(nombre, contra);
-        boolean respuesta = controladorC.Guardar(usuario);
+       
                 boolean success = DataBaseConfing.register(nombre, contra);
                 if (success) {
                     JOptionPane.showMessageDialog(null,"Usuario registrado con éxito.");

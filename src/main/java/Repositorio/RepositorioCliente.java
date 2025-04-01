@@ -23,12 +23,7 @@ public class RepositorioCliente {
         return listaUsuario;
     }
     
-    public boolean Guardar(Usuario persona){
-        Lista<Usuario> listaPersona = this.listaUsuario;
-        listaPersona.add(persona);
-        Singleton.getInstancia().escribirObjectoPersona();
-        return true;
-    }
+   
     
     
     public Usuario BuscarCliente(String NombreUsuario) {

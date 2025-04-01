@@ -34,8 +34,5 @@ public class VentaPuntos implements Serializable {
         return puntosGastados;
     }
 
-    @Override
-    public String toString() {
-        return "Venta de " + juego.getNombre() + " por " + puntosGastados + " puntos a " + usuario.getNombre();
-    }
+    
 }
