@@ -8,6 +8,7 @@ import IA.IA;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,8 +33,9 @@ IA ia;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtRespuesta = new javax.swing.JTextPane();
         jLabel6 = new javax.swing.JLabel();
-        txtRespuestaIA = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         txtIA = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
@@ -41,8 +43,6 @@ IA ia;
         botonListaDes = new javax.swing.JButton();
         botonBiblioteca = new javax.swing.JButton();
         BotonTienda = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TbBiblioteca = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -54,9 +54,12 @@ IA ia;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jScrollPane1.setViewportView(txtRespuesta);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 780, 270));
+
         jLabel6.setText("Preguntar a la IA");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 370, -1, -1));
-        getContentPane().add(txtRespuestaIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 350, 120));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, -1, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Botones2.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -64,8 +67,8 @@ IA ia;
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, 140, 40));
-        getContentPane().add(txtIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 290, 50));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, 140, 40));
+        getContentPane().add(txtIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 290, 50));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton5.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -107,21 +110,6 @@ IA ia;
         });
         getContentPane().add(BotonTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 90, 30));
 
-        TbBiblioteca.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(TbBiblioteca);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 350, 130));
-
         jLabel4.setText("Buscar");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 50, -1));
 
@@ -135,13 +123,13 @@ IA ia;
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 210, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo5.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 106, -1, 300));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 106, -1, 370));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Captura de pantalla 2025-02-24 174839.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo4.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 890, 390));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 890, -1));
 
         jLabel5.setText("jLabel5");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -197,18 +185,25 @@ IA ia;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        String mensaje = txtIA.getText();
-                
-                if (!mensaje.isEmpty()) {
-                    String respuesta = ia.createContent(mensaje);
-                    txtRespuestaIA.setText(respuesta);
-                } else {
-                    txtRespuestaIA.setText("Escribe un mensaje antes de enviar.");
-                }
-            
+     // TODO add your handling code here:
+         String mensaje = txtIA.getText();
+
+    if (!mensaje.isEmpty()) {
+        String respuesta = ia.createContent(mensaje);
+        
+     
+        
+           txtRespuesta.setText(respuesta.replace("\n", "\n\n") + "\n\n"); // Mostrar en el JTextArea
+        
+    } else {
+        txtRespuesta.setText("Escribe un mensaje antes de enviar.");
+    
+    }                                        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
+   
     /**
      * @param args the command line arguments
      */
@@ -246,7 +241,6 @@ IA ia;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonTienda;
-    private javax.swing.JTable TbBiblioteca;
     private javax.swing.JButton botonBiblioteca;
     private javax.swing.JButton botonListaDes;
     private javax.swing.JButton jButton1;
@@ -259,9 +253,9 @@ IA ia;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtIA;
-    private javax.swing.JTextField txtRespuestaIA;
+    private javax.swing.JTextPane txtRespuesta;
     // End of variables declaration//GEN-END:variables
 }

@@ -277,13 +277,13 @@ public class AdminJuegos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
       int id = Integer.parseInt(txtId.getText());
 String titulo = txtTitulo.getText();
 String consola = txtConsola.getText();
-String genero = txtGenero.getText();  // Falta capturar el género
+String genero = txtGenero.getText();  
 int lanzamiento = Integer.parseInt(txtLanzamiento.getText());
-int precio = Integer.parseInt(txtPrecio.getText()); // Usa double para precio
+int precio = Integer.parseInt(txtPrecio.getText()); 
 
 Juego juego = new Juego(id, titulo, consola, genero, lanzamiento, precio);
 
